@@ -1,5 +1,6 @@
 package Game;
 
+
 public class Map {
     private int[][] apples = new int[196][2];
     private int contador = 0;
@@ -50,6 +51,9 @@ public class Map {
         contador++;
     }
 
+    public static int VerifyMapPosition(int x, int y) {
+        return map[x][y];
+    }
 
     public int[][] getApples() {
         return this.apples;
