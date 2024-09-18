@@ -1,17 +1,22 @@
 package Game;
 
+import static Game.Constants.Constants.MACA_INCIAL;
+import static Game.Constants.Constants.TAMANHO_MAX;
 
 public class Map {
-    private int[][] apples = new int[196][2];
-    private int contador = 0;
+    private int[] apples = new int[2];
+    private int contador = 1;
 
-    public void AppleGenerator() {
+    public void AppleGenerator(int[][] snakeBody) {
         
         int x = (int) (Math.random() * 15);
         int y = (int) (Math.random() * 15);
         x = FixVariable(x);
         y = FixVariable(y);
 
+        if (ValidateApplePosition(snakeBody, x, y)) {
+            AppleGenerator(snakeBody);
+        }
         AddApple(x, y);
     }
 
@@ -44,9 +49,27 @@ public class Map {
         return value;
     }
 
+    //verifica se o corpo cabeça passou por uma das maças (pode verificar apenas na maçã mais atual)
+    public boolean ValidateApplePosition(int x, int y) {
+        if (apples[0] == x && apples[1] == y) {
+            return true;
+        }
+        return false;
+    }
+
+    //verifica se a maçã nova vai estar dentro do corpo da cobra ou não
+    public boolean ValidateApplePosition(int[][] snakeBody, int x, int y) {
+        for (int i = 0; i < TAMANHO_MAX; i++) {
+            if (snakeBody[i][0] == x && snakeBody[i][1] == y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void AddApple(int x, int y) {
-        apples[contador][0] = x;
-        apples[contador][1] = y;
+        apples[0] = x;
+        apples[1] = y;
 
         contador++;
     }
@@ -55,11 +78,11 @@ public class Map {
         return map[x][y];
     }
 
-    public int[][] getApples() {
+    public int[] getApples() {
         return this.apples;
     }
 
-    public void setApples(int[][] apples) {
+    public void setApples(int[] apples) {
         this.apples = apples;
     }
 
@@ -71,4 +94,7 @@ public class Map {
         this.contador = contador;
     }
 
+    public Map() {
+        apples = MACA_INCIAL;
+    }
 }

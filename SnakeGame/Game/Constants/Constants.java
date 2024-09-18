@@ -8,5 +8,5 @@ public class Constants {
     public static final int TAMANHO_INICIAL = 3;
     public static final int TAMANHO_MAX = 196;
     public static final int VELOCIDADE = 2;
-    public static final int[] POSICAO_INICIAL = { 8, 8 };
+    public static final int[][] POSICAO_INICIAL = { {8, 8}, {8, 7}, {8, 6} };
 }
