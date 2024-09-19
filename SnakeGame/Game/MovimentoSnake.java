@@ -1,17 +1,20 @@
 package Game;
 
-import Game.Map;
 
 import javax.swing.Timer;
 import java.awt.event.ActionListener;
 
 import static Game.Constants.Constants.TAMANHO_MAX;
+import static Game.Constants.Constants.TEXT_DERROTA;
+import static Game.Constants.Constants.COMPRIMENTO_TELA;
+import static Game.Constants.Constants.LARGURA_TELA;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 
@@ -61,7 +64,7 @@ public class MovimentoSnake extends JPanel implements ActionListener, KeyListene
     public MovimentoSnake() {
 
         timer = new Timer(150, e -> {
-            if (snake.getSize() != TAMANHO_MAX - 1 && !perdeu) {
+            if (snake.getSize() != TAMANHO_MAX - 1) {
 
                 int[] posicao = new int[] {snake.getPosicao_atual()[0][0], snake.getPosicao_atual()[0][1]};
                 switch (direcao) {
@@ -82,8 +85,7 @@ public class MovimentoSnake extends JPanel implements ActionListener, KeyListene
                 }
 
                 if (Map.VerifyMapPosition(posicao[0], posicao[1]) == 0 && !snake.ColidiuCorpo(posicao)) {
-                    //se for, conta o ponto, atualiza a maça (verificando se a posição dela vai coincidir com o corpo da cobra)
-                    //se coincidir a maçã deve ir para outra posição
+                    
                     if(comecou){
                         snake.FixSnakeBody(posicao);
                         if (appleMap.ValidateApplePosition(posicao[0], posicao[1])) {
@@ -129,8 +131,19 @@ public class MovimentoSnake extends JPanel implements ActionListener, KeyListene
         for (int i = 0; i < snakeBody.length; i++) {
             if (snakeBody[i][0] != 0 && snakeBody[i][1] != 0) {
                 g.setColor(Color.BLUE);
-                g.fillRect(snakeBody[i][1]*60, snakeBody[i][0]*60, 60, 60);
+                g.fillRect(snakeBody[i][1] * 60, snakeBody[i][0] * 60, 60, 60);
             }
+        }
+        
+        if (perdeu) {
+            setBackground(Color.BLACK);
+            g.setColor(Color.RED);
+            Font font = new Font("Arial", Font.PLAIN, 30);
+            g.setFont(font);
+            g.drawString(TEXT_DERROTA, (LARGURA_TELA / 2)-(TEXT_DERROTA.length()*10), COMPRIMENTO_TELA / 2);
+            
+            timer.stop();
+            repaint();
         }
     }
     

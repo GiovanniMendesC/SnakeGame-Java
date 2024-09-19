@@ -35,6 +35,7 @@ public class Snake {
     public boolean ColidiuCorpo(int[] head) {
         for (int i = size; i > 0; i--) {
             if (posicao_atual[i][0] == head[0] && posicao_atual[i][1] == head[1]) {
+                
                 return true;
             }
         }

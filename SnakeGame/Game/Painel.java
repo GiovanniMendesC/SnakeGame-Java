@@ -1,5 +1,8 @@
 package Game;
 
+import static Game.Constants.Constants.COMPRIMENTO_TELA;
+import static Game.Constants.Constants.LARGURA_TELA;
+
 import javax.swing.JFrame;
 
 public class Painel {
@@ -8,7 +11,7 @@ public class Painel {
         JFrame frame = new JFrame("Snake Game Console");
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(960, 960);
+        frame.setSize(LARGURA_TELA+20, COMPRIMENTO_TELA+55);
         frame.add(ms);
 
         frame.setVisible(true);

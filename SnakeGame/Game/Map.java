@@ -16,8 +16,9 @@ public class Map {
 
         if (ValidateApplePosition(snakeBody, x, y)) {
             AppleGenerator(snakeBody);
+        } else {
+            AddApple(x, y);
         }
-        AddApple(x, y);
     }
 
     public static final int[][] map =
