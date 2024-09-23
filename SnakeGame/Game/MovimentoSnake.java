@@ -25,6 +25,7 @@ public class MovimentoSnake extends JPanel implements ActionListener, KeyListene
     private final Timer timer;
     boolean comecou = false;
 
+    private int aux = 0;
     private int direcao = 0; //1 cima
                              //2 baixo
                              //3 direita
@@ -92,9 +93,12 @@ public class MovimentoSnake extends JPanel implements ActionListener, KeyListene
                             appleMap.AppleGenerator(snake.getPosicao_atual());
                             snake.ContaPonto(posicao[0], posicao[1]);
                         }
+                        aux = direcao;
                     }
-                } else {
+                } else if(snake.ColisaoValida(posicao)){
                     perdeu = true;
+                } else {
+                    direcao = aux;
                 }
 
                 repaint();
