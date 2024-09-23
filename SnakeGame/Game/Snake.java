@@ -35,13 +35,43 @@ public class Snake {
     public boolean ColidiuCorpo(int[] head) {
         for (int i = size; i > 0; i--) {
             if (posicao_atual[i][0] == head[0] && posicao_atual[i][1] == head[1]) {
-                
+
                 return true;
             }
         }
         return false;
     }
     
+    public boolean ColisaoValida(int[] head) {
+        if (posicao_atual[1][0] == head[0] && posicao_atual[1][1] == head[1]) {
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean PredictColision(int direction) {
+        int[] head = new int[] { posicao_atual[0][0], posicao_atual[0][1] };
+        switch (direction) {
+            case 1:
+                head[0]--;
+                break;
+            case 2:
+                head[0]++;
+                break;
+            case 3:
+                head[1]++;
+                break;
+            case 4:
+                head[1]--;
+                break;
+            default:
+                break;
+        }
+        if (posicao_atual[1][0] == head[0] && posicao_atual[1][1] == head[1]) {
+            return false;
+        }
+        return true;
+    }
     public int getSize() {
         return this.size;
     }

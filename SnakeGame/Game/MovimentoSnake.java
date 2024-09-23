@@ -38,20 +38,28 @@ public class MovimentoSnake extends JPanel implements ActionListener, KeyListene
         int keyCode = e.getKeyCode();
         System.out.println("key pressed "+keyCode);
         if(keyCode == KeyEvent.VK_RIGHT){
-            direcao = 3;
-            comecou = true;
+            if (snake.PredictColision(3)) {
+                direcao = 3;
+                comecou = true;
+            }
         }
         if(keyCode == KeyEvent.VK_LEFT){
-            direcao = 4;
-            comecou = true;
+            if (snake.PredictColision(4)) {
+                direcao = 4;
+                comecou = true;
+            }
         }
         if(keyCode == KeyEvent.VK_DOWN){
-            direcao = 2;
-            comecou = true;
+            if (snake.PredictColision(2)) {
+                direcao = 2;
+                comecou = true;
+            }
         }
         if(keyCode == KeyEvent.VK_UP){
-            direcao = 1;
-            comecou = true;
+            if (snake.PredictColision(1)) {
+                direcao = 1;
+                comecou = true;
+            }
         }
     }
 
@@ -93,9 +101,9 @@ public class MovimentoSnake extends JPanel implements ActionListener, KeyListene
                             snake.ContaPonto(posicao[0], posicao[1]);
                         }
                     }
-                } else {
+                } else{
                     perdeu = true;
-                }
+                } 
 
                 repaint();
             }
@@ -123,8 +131,6 @@ public class MovimentoSnake extends JPanel implements ActionListener, KeyListene
                     g.setColor(Color.RED);
                     g.fillRect(j * 60, i * 60, 60, 60);
                 }
-                //função para verificar se o lugar é uma maçã ou não
-                //a função deve servir para pintar
             }
         }
         
