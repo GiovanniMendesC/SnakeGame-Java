@@ -18,4 +18,6 @@ public class Constants {
     //DIALOG
     public static final String TEXT_VITORIA = "VOCÊ GANHOU!";
     public static final String TEXT_DERROTA = "VOCÊ PERDEU :(";
+    public static final String TEXT_POINTS = "PONTUAÇÃO: ";
+    public static final String TEXT_CONTINUE = "Aperte espaço para continuar...";
 }

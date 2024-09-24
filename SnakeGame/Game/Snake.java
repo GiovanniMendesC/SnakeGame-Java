@@ -25,7 +25,8 @@ public class Snake {
     }
 
     public void FixSnakeBody(int[] newHead) {
-        System.out.println(" { " + newHead[0] + ", " + newHead[1] + " }");
+        System.out.println(" { " + newHead[0] + ", " + newHead[1] + " }" + "   ->  " +  Map.VerifyMapPosition(newHead[0], newHead[1]));
+
         for (int i = size; i > 0; i--) {
             posicao_atual[i] = posicao_atual[i - 1];
         }
@@ -72,6 +73,15 @@ public class Snake {
         }
         return true;
     }
+
+    public void reset(){
+        posicao_atual = new int[196][2];
+        for (int i = 0; i < TAMANHO_INICIAL; i++) {
+            posicao_atual[i] = POSICAO_INICIAL[i];
+        }
+        size = TAMANHO_INICIAL;
+        pontuacao = 0;
+    }
     public int getSize() {
         return this.size;
     }
@@ -97,7 +107,7 @@ public class Snake {
     }
 
     public Snake() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < TAMANHO_INICIAL; i++) {
             posicao_atual[i] = POSICAO_INICIAL[i];
         }
     }
