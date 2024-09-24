@@ -79,6 +79,12 @@ public class Map {
         return map[x][y];
     }
 
+    public void reset() {
+        apples = new int[2];
+        apples = new int[] { MACA_INCIAL[0], MACA_INCIAL[1] };
+        contador = 1;
+    }
+
     public int[] getApples() {
         return this.apples;
     }
@@ -96,6 +102,6 @@ public class Map {
     }
 
     public Map() {
-        apples = MACA_INCIAL;
+        apples = new int[] { MACA_INCIAL[0], MACA_INCIAL[1] };
     }
 }
